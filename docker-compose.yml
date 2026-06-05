@@ -1,0 +1,24 @@
+# Local development only. Production runs on Vercel.
+services:
+  agent:
+    build:
+      context: ./agent
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: http://localhost:8000
+    depends_on:
+      - agent
+    ports:
+      - "3000:80"
+
+  n8n:
+    image: n8nio/n8n:latest
+    ports:
+      - "5678:5678"
