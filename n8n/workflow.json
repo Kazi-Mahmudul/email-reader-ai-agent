@@ -1,1 +1,164 @@
-{}
+{
+  "name": "AI Email Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 2
+            }
+          ]
+        }
+      },
+      "id": "c7fab120-4073-49cf-aabf-dffc4e5cc8c2",
+      "name": "Every 2 Minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -384,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://email-reader-ai-agent.vercel.app/api/trigger-poll",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "94d700d0-f613-4693-a772-c69419dca01b",
+      "name": "Trigger Poll",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -176,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "condition-new-notifs",
+              "leftValue": "={{ $json.new_notifications }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "dc4ff3c9-0ecd-4343-9977-2612a14ae256",
+      "name": "Has New Notifications?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        48,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://email-reader-ai-agent.vercel.app/api/notifications",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "e7a8458f-9712-4187-94ba-41d213ece96f",
+      "name": "Fetch Notifications",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        0
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "09ebc67f-d30e-4369-b686-4a889c47ca23",
+      "name": "No New Emails",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        272,
+        224
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Every 2 Minutes": {
+      "main": [
+        [
+          {
+            "node": "Trigger Poll",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trigger Poll": {
+      "main": [
+        [
+          {
+            "node": "Has New Notifications?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has New Notifications?": {
+      "main": [
+        [
+          {
+            "node": "Fetch Notifications",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No New Emails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "cfb371e9-c80b-483a-bcc0-e61646ede3a4",
+  "meta": {
+    "instanceId": "633dd266c6ffde309a4a6bc4ca83de8b6bcd0b5c00f4defff036c6a88f052660"
+  },
+  "id": "jNc8G5KXT417rv2k",
+  "tags": []
+}
