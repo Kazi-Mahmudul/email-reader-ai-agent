@@ -1,1 +1,212 @@
-[]
+[
+  {
+    "id": "email_001",
+    "from": "Alicia Grant <alicia.grant@northstarpay.com>",
+    "subject": "Invoice #4481 payment failed on retry",
+    "body": "Our billing system attempted to process Invoice #4481 this morning, but the card on file was declined again. Service renewal is scheduled for tomorrow and may be interrupted if the balance remains unpaid. Please confirm an updated payment method as soon as possible.",
+    "received_at": "2026-06-05T08:14:00Z"
+  },
+  {
+    "id": "email_002",
+    "from": "Finance Desk <billing@cloudforge.io>",
+    "subject": "Outstanding balance requires immediate action",
+    "body": "We were unable to settle your May account charges due to a banking authorization error. The amount is now past due and your account has entered a grace period. Share a remittance confirmation today to avoid automatic suspension.",
+    "received_at": "2026-06-04T16:42:00Z"
+  },
+  {
+    "id": "email_003",
+    "from": "Monica Lee <accounts@harboranalytics.com>",
+    "subject": "Failed ACH transfer for subscription renewal",
+    "body": "The ACH transfer initiated for your annual subscription did not clear with your bank. We have paused invoice closure until payment is completed. Please advise whether we should retry ACH or issue a card payment link.",
+    "received_at": "2026-06-03T11:09:00Z"
+  },
+  {
+    "id": "email_004",
+    "from": "Rohan Patel <rohan@ledgerlane.co>",
+    "subject": "Billing discrepancy on June statement",
+    "body": "Our team spotted a mismatch between the agreed contract rate and the amount billed on your June statement. The current invoice reflects a higher usage tier than expected. Can you review and send a corrected invoice today?",
+    "received_at": "2026-06-02T19:27:00Z"
+  },
+  {
+    "id": "email_005",
+    "from": "Nora Kim <nora.kim@payopsnet.com>",
+    "subject": "Payment method expired for enterprise account",
+    "body": "The corporate card ending in 4412 expired and your next auto-charge is set for tonight. If the transaction fails, premium support access will be restricted. Please update card details before 10:00 PM UTC.",
+    "received_at": "2026-05-31T21:55:00Z"
+  },
+  {
+    "id": "email_006",
+    "from": "Ethan Ruiz <ethan.ruiz@brightcart.com>",
+    "subject": "Urgent: customers cannot complete checkout",
+    "body": "Since this morning, multiple customers reported being stuck on the final checkout screen. We are seeing abandoned carts spike and support calls are increasing quickly. Please investigate immediately and share an ETA for resolution.",
+    "received_at": "2026-06-05T06:31:00Z"
+  },
+  {
+    "id": "email_007",
+    "from": "Priya Nair <priya.nair@oakridgelegal.com>",
+    "subject": "Escalation: repeated delays on deliverables",
+    "body": "We still have not received the revised documents promised last week. This delay is affecting our filing deadline and creating risk for our client. I need a confirmed delivery time within the next two hours.",
+    "received_at": "2026-06-04T13:03:00Z"
+  },
+  {
+    "id": "email_008",
+    "from": "Calvin Brooks <calvin@urbanhomegoods.net>",
+    "subject": "Formal complaint about unresolved ticket #9032",
+    "body": "Your support team closed ticket #9032 without fixing the issue and no one followed up. We have provided screenshots twice and the problem persists for our staff. Please reopen the case and assign a senior specialist today.",
+    "received_at": "2026-06-03T22:18:00Z"
+  },
+  {
+    "id": "email_009",
+    "from": "Lucia Moreno <lucia.moreno@vantagehealth.org>",
+    "subject": "Need immediate response on data export request",
+    "body": "Our compliance audit starts tomorrow and we still cannot access the full activity export. This request was submitted four days ago and marked urgent. Please prioritize this now and confirm when the file will be ready.",
+    "received_at": "2026-06-02T09:44:00Z"
+  },
+  {
+    "id": "email_010",
+    "from": "Henry Walsh <h.walsh@seaportretail.com>",
+    "subject": "Critical customer dissatisfaction report",
+    "body": "We received several complaints about delayed order notifications tied to your integration. Customer sentiment has dropped and our CS team is overwhelmed. We need a concrete fix plan and timeline by end of day.",
+    "received_at": "2026-06-01T17:36:00Z"
+  },
+  {
+    "id": "email_011",
+    "from": "Datadog Alerts <alerts@datadoghq-mail.com>",
+    "subject": "P1 Alert: API error rate exceeded threshold",
+    "body": "Error rates on the production API crossed the P1 threshold at 03:12 UTC and continue to climb. Automated remediation did not recover service health. Immediate engineering intervention is required.",
+    "received_at": "2026-06-05T03:20:00Z"
+  },
+  {
+    "id": "email_012",
+    "from": "Infra Monitor <noreply@opswatch.io>",
+    "subject": "Server down: us-east-web-03 unreachable",
+    "body": "Health checks have failed for us-east-web-03 for the last 11 minutes. Customer-facing pages are returning intermittent 502 responses. Please acknowledge and post an incident update.",
+    "received_at": "2026-06-04T01:57:00Z"
+  },
+  {
+    "id": "email_013",
+    "from": "PagerDuty <no-reply@pagerduty.com>",
+    "subject": "Database latency incident triggered",
+    "body": "Average database query latency is now above 2.8 seconds in production. Several dependent services are timing out as a result. The incident remains unassigned and requires urgent owner action.",
+    "received_at": "2026-06-02T14:12:00Z"
+  },
+  {
+    "id": "email_014",
+    "from": "Kubernetes Bot <k8s-bot@cluster-notify.net>",
+    "subject": "CrashLoopBackOff detected in payment-service pods",
+    "body": "Three payment-service pods entered CrashLoopBackOff after the latest deploy. Traffic is being rerouted but capacity is reduced by 40 percent. Rollback or patch is needed to prevent broader outage.",
+    "received_at": "2026-05-30T23:41:00Z"
+  },
+  {
+    "id": "email_015",
+    "from": "Sara Bennett <sara.bennett@northpointlogistics.com>",
+    "subject": "Inquiry about enterprise pricing tiers",
+    "body": "We are evaluating platforms for a team of around 85 users across two regions. Could you share pricing details for annual contracts and volume discounts? A short comparison sheet would help our procurement review.",
+    "received_at": "2026-06-05T12:26:00Z"
+  },
+  {
+    "id": "email_016",
+    "from": "Devon Miles <devon@clearwaterfinance.co>",
+    "subject": "Question on API rate limits and sandbox access",
+    "body": "We are planning an integration and want to confirm your default API rate limits. We also need to know whether sandbox keys support webhook simulations. Please send the relevant documentation links.",
+    "received_at": "2026-06-03T10:05:00Z"
+  },
+  {
+    "id": "email_017",
+    "from": "Isabel Soto <isabel.soto@horizonworks.io>",
+    "subject": "Request for implementation timeline estimate",
+    "body": "Our team is mapping Q3 initiatives and needs an estimated onboarding timeline. We are particularly interested in migration support and training availability. Let us know typical milestones for a standard rollout.",
+    "received_at": "2026-06-01T08:49:00Z"
+  },
+  {
+    "id": "email_018",
+    "from": "Marcus Reed <m.reed@crestlinegroup.com>",
+    "subject": "Need clarification on contract renewal terms",
+    "body": "Before we proceed with renewal, we need clarity on cancellation windows and price-lock conditions. The draft terms appear different from last year. Can your team confirm the exact policy language?",
+    "received_at": "2026-05-31T15:33:00Z"
+  },
+  {
+    "id": "email_019",
+    "from": "Emily Hart <emily.hart@greenbridgepartners.com>",
+    "subject": "Meeting request for onboarding kickoff",
+    "body": "We are ready to start onboarding and would like to schedule a kickoff call next week. Our preferred times are Tuesday or Wednesday morning Eastern Time. Please share available slots and a calendar invite.",
+    "received_at": "2026-06-04T18:22:00Z"
+  },
+  {
+    "id": "email_020",
+    "from": "Noah Fischer <nfischer@altitudebiotech.com>",
+    "subject": "Can we book a 30-minute product demo?",
+    "body": "Our operations lead and IT manager want a focused demo on reporting workflows. A 30-minute session would be enough for this phase. Please propose two time options for early next week.",
+    "received_at": "2026-06-03T07:58:00Z"
+  },
+  {
+    "id": "email_021",
+    "from": "Jasmine Cole <jasmine.cole@pioneeredu.org>",
+    "subject": "Calendar invite: quarterly review discussion",
+    "body": "I sent a tentative invite for our quarterly review on Thursday at 2:00 PM UTC. We plan to cover adoption metrics and open support items. Please confirm attendance or suggest an alternate time.",
+    "received_at": "2026-06-02T20:11:00Z"
+  },
+  {
+    "id": "email_022",
+    "from": "Liam O'Connor <liam.oconnor@metrocraft.ai>",
+    "subject": "Scheduling sync with technical stakeholders",
+    "body": "Could we arrange a short sync between your solutions engineer and our backend lead? We want to validate architecture decisions before development starts. Please send a meeting link for any slot this Friday.",
+    "received_at": "2026-05-30T12:40:00Z"
+  },
+  {
+    "id": "email_023",
+    "from": "Product Updates <news@saasweeklydigest.com>",
+    "subject": "June product roundup and feature highlights",
+    "body": "This month we published updates on workflow automation, analytics dashboards, and integrations. The newsletter includes customer stories and links to recorded webinars. You can manage topic preferences from your subscription center.",
+    "received_at": "2026-06-05T09:02:00Z"
+  },
+  {
+    "id": "email_024",
+    "from": "Marketing Team <hello@growthorbitmedia.com>",
+    "subject": "New guide: improving retention with lifecycle campaigns",
+    "body": "Our latest guide covers practical lifecycle campaign templates for B2B teams. It includes benchmark data and examples from recent campaigns. Download it if you are planning retention initiatives this quarter.",
+    "received_at": "2026-06-04T05:16:00Z"
+  },
+  {
+    "id": "email_025",
+    "from": "Events Desk <events@techsummitbulletin.io>",
+    "subject": "You're invited to this month's virtual summit",
+    "body": "Registration is now open for our virtual summit on modern data operations. Speakers from several SaaS companies will share implementation lessons. Reserve a seat if you would like reminder emails before sessions begin.",
+    "received_at": "2026-06-01T13:27:00Z"
+  },
+  {
+    "id": "email_026",
+    "from": "Insights Newsletter <insights@marketpulseletters.com>",
+    "subject": "Weekly industry brief and trend snapshots",
+    "body": "Here is your weekly brief covering funding news, pricing shifts, and product launches. We also included a short editorial on procurement trends in enterprise software. Reply with topics you want us to cover next week.",
+    "received_at": "2026-05-31T06:52:00Z"
+  },
+  {
+    "id": "email_027",
+    "from": "Promo Center <deals@mega-saver-outlet.biz>",
+    "subject": "Claim 90% OFF software licenses today",
+    "body": "Limited inventory is available for deeply discounted software bundles with instant activation. Click now to secure your code before midnight. This one-time promotion will not be offered again.",
+    "received_at": "2026-06-05T01:11:00Z"
+  },
+  {
+    "id": "email_028",
+    "from": "Cash Rewards <winner@reward-vaults.info>",
+    "subject": "You have been selected for a cash reward",
+    "body": "Your email was chosen in a promotional sweepstakes for a large cash payout. Submit your details immediately to verify eligibility and release funds. Delay may result in cancellation of your claim.",
+    "received_at": "2026-06-03T02:24:00Z"
+  },
+  {
+    "id": "email_029",
+    "from": "SEO Booster Pro <sales@rankrocket-fast.top>",
+    "subject": "Guaranteed #1 rankings in 48 hours",
+    "body": "We guarantee first-page ranking for any keyword with no effort from your team. Our special package includes thousands of instant backlinks at a huge discount. Reply now to lock in your exclusive offer.",
+    "received_at": "2026-06-02T04:39:00Z"
+  },
+  {
+    "id": "email_030",
+    "from": "Crypto Profit Desk <offers@coin-multiplier.cc>",
+    "subject": "Turn $500 into $10,000 this week",
+    "body": "Our private crypto strategy can multiply your money in just a few days with zero risk. Enrollment is almost full and spots are disappearing fast. Join today to access the premium signal channel.",
+    "received_at": "2026-05-30T18:08:00Z"
+  }
+]
