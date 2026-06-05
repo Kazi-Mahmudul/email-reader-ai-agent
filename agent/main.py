@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import os
+
 from dotenv import find_dotenv, load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -34,6 +36,8 @@ db_ready = False
 def startup_event() -> None:
     """Initialize database table on app startup."""
     global db_ready
+    if not os.getenv("OPENAI_API_KEY", "").strip():
+        print("[AGENT] WARNING: OPENAI_API_KEY not set. Classification will fail.")
     init_db()
     db_ready = True
     print("[AGENT] Started. DB ready.")
@@ -42,6 +46,7 @@ def startup_event() -> None:
 @app.post("/api/trigger-poll")
 def trigger_poll() -> dict:
     """Poll mock emails, classify unprocessed entries, and update notifications."""
+    print("[POLL] Starting poll cycle...")
     all_emails = load_mock_emails()
     processed_ids = get_all_processed_ids()
     unprocessed = get_unprocessed_emails(processed_ids)
@@ -52,6 +57,7 @@ def trigger_poll() -> dict:
     # Safety check to avoid acting on stale IDs if source changed unexpectedly.
     all_ids = {email.get("id") for email in all_emails}
     unprocessed = [email for email in unprocessed if email.get("id") in all_ids]
+    print(f"[POLL] Found {len(unprocessed)} unprocessed emails")
 
     for email in unprocessed:
         email_id = email["id"]
@@ -66,6 +72,8 @@ def trigger_poll() -> dict:
         mark_processed(email_id)
         processed_count += 1
 
+    print(f"[POLL] New notifications added: {new_notifications}")
+    print("[POLL] Poll cycle complete.")
     return {"processed": processed_count, "new_notifications": new_notifications}
 
 
@@ -77,6 +85,28 @@ def get_notifications() -> list[dict]:
         key=lambda item: item.get("received_at", ""),
         reverse=True,
     )
+
+
+@app.get("/api/notifications/stats")
+def get_notification_stats() -> dict:
+    """Return summary counts for in-memory notifications."""
+    by_priority = {"HIGH": 0, "MEDIUM": 0, "LOW": 0}
+    by_category: dict[str, int] = {}
+
+    for item in notifications:
+        priority = str(item.get("priority", "LOW")).upper()
+        if priority not in by_priority:
+            by_priority[priority] = 0
+        by_priority[priority] += 1
+
+        category = str(item.get("category", "UNKNOWN")).upper()
+        by_category[category] = by_category.get(category, 0) + 1
+
+    return {
+        "total": len(notifications),
+        "by_priority": by_priority,
+        "by_category": by_category,
+    }
 
 
 @app.delete("/api/notifications/{email_id}")
