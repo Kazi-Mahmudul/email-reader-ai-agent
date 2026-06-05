@@ -1,5 +1,7 @@
 # AI Email Reading Agent
 
+## Live: [https://ai-email-agent-chi.vercel.app](https://ai-email-agent-chi.vercel.app)
+
 ## Overview
 AI Email Reading Agent is an end-to-end email triage system for a B2B SaaS workflow.  
 It ingests emails (mock dataset for now), classifies them with OpenAI, prevents duplicate processing with Neon PostgreSQL, and shows only important notifications in a React dashboard.
