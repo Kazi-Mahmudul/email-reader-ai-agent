@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from typing import Any
 
 from dotenv import load_dotenv
@@ -121,24 +122,66 @@ def classify_email(email: dict) -> dict:
     """Classify one email and return importance, priority, category, and reason."""
     required = {"id", "from", "subject", "body"}
     missing = sorted(required - set(email.keys()))
+    email_id = email.get("id", "<missing-id>")
+    print(f"[CLASSIFIER] Processing email_id: {email_id}")
+
     if missing:
-        raise ValueError(f"Email missing required fields: {missing}")
+        error_message = f"Email missing required fields: {missing}"
+        print(f"[CLASSIFIER] ERROR: {error_message}")
+        raise ValueError(error_message)
 
-    response = _client().chat.completions.create(
-        model=MODEL_NAME,
-        response_format={"type": "json_object"},
-        temperature=0,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": _build_user_prompt(email)},
-        ],
-    )
+    for attempt in range(2):
+        try:
+            response = _client().chat.completions.create(
+                model=MODEL_NAME,
+                response_format={"type": "json_object"},
+                temperature=0,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": _build_user_prompt(email)},
+                ],
+            )
 
-    raw_content = response.choices[0].message.content or "{}"
-    parsed = json.loads(raw_content)
-    if not isinstance(parsed, dict):
-        raise ValueError("Model response was not a JSON object.")
-    return _normalize_result(parsed)
+            raw_content = response.choices[0].message.content or "{}"
+            parsed = json.loads(raw_content)
+            if not isinstance(parsed, dict):
+                raise ValueError("Model response was not a JSON object.")
+
+            result = _normalize_result(parsed)
+            print(
+                "[CLASSIFIER] Result: "
+                f"important={result['important']}, "
+                f"priority={result['priority']}, "
+                f"category={result['category']}"
+            )
+            return result
+        except Exception as exc:
+            print(f"[CLASSIFIER] ERROR: {exc}")
+            if attempt == 0:
+                time.sleep(2)
+                continue
+
+            fallback = {
+                "important": False,
+                "priority": "LOW",
+                "category": "CLASSIFICATION_ERROR",
+                "reason": f"AI classification failed: {exc}",
+            }
+            print(
+                "[CLASSIFIER] Result: "
+                f"important={fallback['important']}, "
+                f"priority={fallback['priority']}, "
+                f"category={fallback['category']}"
+            )
+            return fallback
+
+    # This line is unreachable but keeps static checkers happy.
+    return {
+        "important": False,
+        "priority": "LOW",
+        "category": "CLASSIFICATION_ERROR",
+        "reason": "AI classification failed: unknown error",
+    }
 
 
 def classify_batch(emails: list[dict]) -> list[dict]:
